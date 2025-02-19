@@ -1,7 +1,14 @@
 window.onload = function() {
     const devMessage = document.getElementById("devMessage");
-    devMessage.style.display = "block"; // Show the developer message
+    
+    // Show the developer message with animation
     setTimeout(() => {
-        devMessage.style.display = "none"; // Hide after 3 seconds
-    }, 3000); // 3000 milliseconds = 3 seconds
+        devMessage.classList.add("show");
+    }, 100); // Slight delay before showing
+    
+    // Hide the message after 3 seconds with animation
+    setTimeout(() => {
+        devMessage.classList.remove("show");
+        devMessage.classList.add("hide");
+    }, 3000); // Message disappears after 3 seconds
 }
