@@ -107,19 +107,40 @@
             display: none;
             z-index: 1000;
         }
-        /* Dev message styling */
+        /* Dev message styling with animation */
         .dev-message {
             position: fixed;
-            top: 20px;
+            top: -50px; /* Start from above the viewport */
             left: 50%;
             transform: translateX(-50%);
-            background-color: #5A9;
+            background-color: #FF6347; /* Changed color to a vibrant red */
             color: white;
-            padding: 10px 20px;
+            padding: 15px 25px;
             border-radius: 8px;
-            font-size: 18px;
+            font-size: 20px;
+            font-weight: bold;
             display: none;
             z-index: 999;
+            opacity: 0;
+            transition: opacity 1s, top 1s ease-out;
+        }
+
+        /* Show message with a slide-down animation */
+        .dev-message.show {
+            display: block;
+            top: 20px; /* Final position */
+            opacity: 1;
+        }
+
+        /* Slide up and fade out */
+        .dev-message.hide {
+            top: -50px; /* Move the message above the screen */
+            opacity: 0;
+        }
+
+        /* Text shadow effect for the message */
+        .dev-message {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -145,10 +166,17 @@
     <script>
         window.onload = function() {
             const devMessage = document.getElementById("devMessage");
-            devMessage.style.display = "block"; // Show the developer message
+            
+            // Show the developer message with animation
             setTimeout(() => {
-                devMessage.style.display = "none"; // Hide after 3 seconds
-            }, 3000); // 3000 milliseconds = 3 seconds
+                devMessage.classList.add("show");
+            }, 100); // Slight delay before showing
+            
+            // Hide the message after 3 seconds with animation
+            setTimeout(() => {
+                devMessage.classList.remove("show");
+                devMessage.classList.add("hide");
+            }, 3000); // Message disappears after 3 seconds
         }
 
         function convert() {
