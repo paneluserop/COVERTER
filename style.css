@@ -1,0 +1,14 @@
+/* Dev message styling */
+.dev-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #5A9;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    display: none;
+    z-index: 999;
+}
